@@ -1,0 +1,11 @@
+class gfx::Core {
+
+public:
+
+    Core() = delete;
+
+    static void initVulkan();
+    static void mainLoop();
+    static void cleanup();
+
+};
