@@ -10,6 +10,10 @@ public:
 
     Utils() = delete;
 
+    static void log(std::string logString) {
+        std::println("[gfx-lib] {}", logString);
+    }
+
     static void showError(std::string errorString) {
         std::println(stderr, "[gfx-lib] error: {}", errorString);
     }

@@ -1,20 +1,28 @@
 #include "gfx-lib/gfx.hpp"
 
-#include <print>
+// TODO:
+// issue with dangling pointer in openWindows
 
 void gfx::init() {
 
-    gfx::Window window;
-    window.title = "pog window 1";
-    window.open();
-
+    gfx::Window window1;
     gfx::Window window2;
-    window2.title = "pog window 2";
+
+    window1.title = "pog";
+    window1.open();
+
+    window2.title = "poggers";
     window2.open();
 
-    std::println("windows open:");
-    for (gfx::Window &window : gfx::Window::openWindows)
-        std::println(" |- {}", window.title);
+    std::println("open windows:");
+    for (auto *window : gfx::Window::openWindows)
+        std::println(" |- {}", window->title);
+
+    window1.title = "NOT pog";
+
+    std::println("open windows:");
+    for (auto *window : gfx::Window::openWindows)
+        std::println(" |- {}", window->title);
 
 }
 

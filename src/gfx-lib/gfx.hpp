@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <SDL3/SDL.h>
+
 namespace gfx {
 
     class Utils;
@@ -28,11 +31,7 @@ int gfx::run() {
     try {
 
         gfx::init();
-
-            gfx::Core::initVulkan();
-            gfx::Core::mainLoop(); // which calls gfx::loop() within it
-            gfx::Core::cleanup();
-
+        gfx::Core::mainLoop();
         gfx::exit();
 
     } catch (const std::exception &e) {

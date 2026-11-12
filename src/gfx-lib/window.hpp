@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <cstdint>
 #include <SDL3/SDL.h>
 
 class gfx::Window {
@@ -7,20 +7,24 @@ class gfx::Window {
 public:
 
     const char* title = "";
-    unsigned int width = 1080;
-    unsigned int height = 720;
-    unsigned int targetFps = 144;
+    uint32_t width = 1080;
+    uint32_t height = 720;
+    uint32_t targetFps = 144;
     bool resizable = true;
-    bool shouldClose = false;
+    uint32_t ID;
 
-    inline static std::vector<Window> openWindows;
     void open();
-    
+    void close();
+    inline static std::vector<Window*> openWindows;
+
     float getFps() { return fps_; }
 
-private:
+protected: friend class Core;
 
-    SDL_Window* windowObject_;
     float fps_;
+    SDL_Window* windowObject_;
+
+    void pollEvents(const SDL_Event event);
+    void applyProperties();
 
 };
