@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <SDL3/SDL.h>
 
-class gfx::Window {
+class fsx::Window {
 
 public:
 

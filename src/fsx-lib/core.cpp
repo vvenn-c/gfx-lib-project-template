@@ -1,6 +1,6 @@
-#include "gfx.hpp"
+#include "fsx.hpp"
 
-void gfx::Core::initSDL() {
+void fsx::Core::initSDL() {
 
     if (!SDL_Init(SDL_INIT_VIDEO))
         throw std::runtime_error("failed to initialize SDL");
@@ -8,18 +8,22 @@ void gfx::Core::initSDL() {
 
 }
 
-void gfx::Core::initVulkan() {
+void fsx::Core::initVulkan() {
 
 
 
 }
 
-void gfx::Core::mainLoop() {
+void fsx::Core::mainLoop() {
 
-    while (!gfx::shouldAppClose) {
+    while (!fsx::shouldAppClose) {
 
-        if (Window::openWindows.empty())
-            gfx::shouldAppClose = true;
+        if (Window::openWindows.empty()) {
+
+            Utils::log("all windows closed, terminating application..");
+            fsx::shouldAppClose = true;
+
+        }
 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -27,7 +31,7 @@ void gfx::Core::mainLoop() {
                 window->pollEvents(event);
         }
 
-        gfx::loop();
+        fsx::loop();
 
         for (auto *window : Window::openWindows)
             window->applyProperties();
@@ -36,7 +40,7 @@ void gfx::Core::mainLoop() {
 
 }
 
-void gfx::Core::cleanup() {
+void fsx::Core::cleanup() {
 
     
 

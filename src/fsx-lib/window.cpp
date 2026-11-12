@@ -1,8 +1,8 @@
 #include <SDL3/SDL.h>
 
-#include "gfx.hpp"
+#include "fsx.hpp"
 
-void gfx::Window::open() {
+void fsx::Window::open() {
 
     // TODO: don't open if pointer already exists in openWindows
 
@@ -22,7 +22,7 @@ void gfx::Window::open() {
 
 }
 
-void gfx::Window::pollEvents(const SDL_Event event) {
+void fsx::Window::pollEvents(const SDL_Event event) {
 
     if (event.window.windowID == ID) {
 
@@ -42,20 +42,23 @@ void gfx::Window::pollEvents(const SDL_Event event) {
 
 }
 
-void gfx::Window::applyProperties() {
+void fsx::Window::applyProperties() {
 
-
+    // TODO: only call this if it was changed. (perhaps by comparing to the swapchain size?)
+    SDL_SetWindowSize(windowObject_, width, height);
 
 }
 
-void gfx::Window::close() {
+void fsx::Window::close() {
 
     SDL_DestroyWindow(windowObject_);
     std::erase(openWindows, this);
 
+    Utils::log(std::format("closed window \"{}\"", title));
+
 }
 
-gfx::Window::~Window() {
+fsx::Window::~Window() {
 
     if (openWindows.size() > 0) {
 

@@ -3,7 +3,7 @@
 #include <vector>
 #include <SDL3/SDL.h>
 
-namespace gfx {
+namespace fsx {
 
     class Utils;
     class Window;
@@ -26,23 +26,23 @@ namespace gfx {
 #include "window.hpp"
 #include "core.hpp"
 
-int gfx::run() {
+int fsx::run() {
 
     try {
 
-        gfx::Core::initSDL();
-        gfx::Core::initVulkan();
+        fsx::Core::initSDL();
+        fsx::Core::initVulkan();
 
-        gfx::init();
+        fsx::init();
 
-        gfx::Core::mainLoop();
-        gfx::Core::cleanup();
+        fsx::Core::mainLoop();
+        fsx::Core::cleanup();
 
-        gfx::exit();
+        fsx::exit();
 
     } catch (const std::exception &e) {
 
-        gfx::Utils::showError(e.what());
+        fsx::Utils::showError(e.what());
         return EXIT_FAILURE;
 
     } return EXIT_SUCCESS;

@@ -1,13 +1,12 @@
 #include <vector>
 #include <SDL3/SDL.h>
 
-#include "gfx.hpp"
+#include "fsx.hpp"
 
 class Input {
 
 public:
 
-    struct Keyboard;
-    struct Mouse;
+    
 
 };

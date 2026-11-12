@@ -1,25 +1,21 @@
-#include "gfx-lib/gfx.hpp"
+#include "fsx-lib/fsx.hpp"
 
-gfx::Window window;
-gfx::Window window2;
+fsx::Window window;
 
-void gfx::init() {
+void fsx::init() {
 
     window.title = "pog";
     window.open();
 
-    window2.title = "poggers";
-    window2.open();
-
 }
 
-void gfx::loop() {
+void fsx::loop() {
 
 
 
 }
 
-void gfx::exit() {
+void fsx::exit() {
 
 
 
@@ -27,6 +23,6 @@ void gfx::exit() {
 
 int main() {
 
-    gfx::run();
+    fsx::run();
 
 }

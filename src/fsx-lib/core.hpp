@@ -1,4 +1,4 @@
-class gfx::Core {
+class fsx::Core {
 
 public:
 
