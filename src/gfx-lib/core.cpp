@@ -3,7 +3,8 @@
 void gfx::Core::initSDL() {
 
     if (!SDL_Init(SDL_INIT_VIDEO))
-        gfx::Utils::showError("SDL initialization failed");
+        throw std::runtime_error("failed to initialize SDL");
+    else Utils::log("SDL initialized");
 
 }
 
@@ -17,18 +18,18 @@ void gfx::Core::mainLoop() {
 
     while (!gfx::shouldAppClose) {
 
-        if (gfx::Window::openWindows.empty())
+        if (Window::openWindows.empty())
             gfx::shouldAppClose = true;
 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            for (auto *window : gfx::Window::openWindows)
+            for (auto *window : Window::openWindows)
                 window->pollEvents(event);
         }
 
         gfx::loop();
 
-        for (auto *window : gfx::Window::openWindows)
+        for (auto *window : Window::openWindows)
             window->applyProperties();
 
     }

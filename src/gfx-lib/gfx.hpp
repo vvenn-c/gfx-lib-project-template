@@ -30,8 +30,14 @@ int gfx::run() {
 
     try {
 
+        gfx::Core::initSDL();
+        gfx::Core::initVulkan();
+
         gfx::init();
+
         gfx::Core::mainLoop();
+        gfx::Core::cleanup();
+
         gfx::exit();
 
     } catch (const std::exception &e) {
