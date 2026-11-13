@@ -1,3 +1,5 @@
+#pragma once
+
 class fsx::Core {
 
 public:

@@ -42,7 +42,7 @@ int fsx::run() {
 
     } catch (const std::exception &e) {
 
-        fsx::Utils::showError(e.what());
+        fsx::Utils::showError("{}", e.what());
         return EXIT_FAILURE;
 
     } return EXIT_SUCCESS;
